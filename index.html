@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Phoenix Ignition - A ceremonial framework of hydrogen rebirth, stellar memory, and mythic fire">
+    <meta name="author" content="James Stanley">
+    <title>Phoenix Ignition | Ceremonial Framework</title>
+    <style>
+        :root {
+            --phoenix-gold: #FFB347;
+            --phoenix-red: #FF6B4A;
+            --deep-space: #0A0E27;
+            --stellar-blue: #1E3A8A;
+            --cosmic-purple: #6B4BA5;
+            --hydrogen-white: #F0F4F8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: linear-gradient(135deg, var(--deep-space) 0%, var(--stellar-blue) 50%, var(--cosmic-purple) 100%);
+            color: var(--hydrogen-white);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--phoenix-gold), var(--phoenix-red), var(--phoenix-gold));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s ease-in-out infinite;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 30px rgba(255, 179, 71, 0.3);
+        }
+
+        @keyframes shimmer {
+            0%, 100% {
+                background-position: 0% center;
+            }
+            50% {
+                background-position: 100% center;
+            }
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--phoenix-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .author {
+            font-size: 1.1rem;
+            color: var(--hydrogen-white);
+            opacity: 0.9;
+            margin-top: 1rem;
+        }
+
+        .phoenix-symbol {
+            font-size: 5rem;
+            margin: 2rem 0;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+
+        .intro {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 179, 71, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 3rem 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .intro p {
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 179, 71, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--phoenix-gold);
+            box-shadow: 0 8px 24px rgba(255, 179, 71, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .feature-card h3 {
+            color: var(--phoenix-gold);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .section {
+            margin: 4rem 0;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            color: var(--phoenix-gold);
+            text-align: center;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .artifacts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .artifact-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 179, 71, 0.2);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .artifact-item:hover {
+            background: rgba(255, 179, 71, 0.1);
+            border-color: var(--phoenix-red);
+        }
+
+        .artifact-item h4 {
+            color: var(--phoenix-gold);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255, 179, 71, 0.2);
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+            opacity: 0.8;
+        }
+
+        .legal {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            font-size: 0.95rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--phoenix-gold), var(--phoenix-red));
+            color: var(--deep-space);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin: 1rem 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 179, 71, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 179, 71, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .tagline {
+                font-size: 1.2rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="phoenix-symbol">🔥</div>
+            <h1>Phoenix Ignition</h1>
+            <p class="tagline">A ceremonial framework of hydrogen rebirth, stellar memory, and mythic fire</p>
+            <p class="author">Authored and activated by <strong>James Stanley</strong></p>
+        </header>
+
+        <div class="intro">
+            <p>Phoenix Ignition is a public rite of hydrogen rebirth, stellar memory, and mythic fire. It bridges cosmology, quantum modeling, and poetic invocation—offering tangible artifacts for ceremonial launch, gifting, and collaborative ignition.</p>
+        </div>
+
+        <section class="section">
+            <h2>Portal Features</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <span class="feature-icon">🔭</span>
+                    <h3>Technical Overview</h3>
+                    <p>Explore the foundations of Phoenix Ignition, FLQG (Finite Loop Quantum Gravity), and Hydrogenesi—bridging quantum mechanics and cosmological modeling.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🪶</span>
+                    <h3>Ceremonial Artifacts</h3>
+                    <p>Discover cue cards, sigil sets, and breath scores designed for ritualistic engagement and personal transformation.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">📦</span>
+                    <h3>Pre-Release Packets</h3>
+                    <p>Access curated showcases for gifting and activation—designed to spark collaborative ignition across communities.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🧭</span>
+                    <h3>Outreach & Consulting</h3>
+                    <p>Connect with pathways for collaboration, consultation, and ceremonial co-creation.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Ceremonial Artifacts</h2>
+            <div class="artifacts-grid">
+                <div class="artifact-item">
+                    <h4>🎴 Cue Cards</h4>
+                    <p>Invocational prompts for ceremonial practice</p>
+                </div>
+                <div class="artifact-item">
+                    <h4>✨ Sigil Sets</h4>
+                    <p>Sacred symbols for energy working and intention</p>
+                </div>
+                <div class="artifact-item">
+                    <h4>🌬️ Breath Scores</h4>
+                    <p>Rhythmic guides for embodied presence</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section legal">
+            <h2>Legal Stewardship</h2>
+            <p>Phoenix Ignition is housed within <strong>Combat Veterans Network LLC</strong> for operational continuity and legal grounding.</p>
+            <p style="margin-top: 1rem;"><strong>License:</strong> MIT License - Public ceremonial use; all rights reserved by author</p>
+            <p style="margin-top: 0.5rem;">Copyright © 2025 James Stanley</p>
+        </section>
+
+        <footer>
+            <p><strong>🌐 Site:</strong> <a href="https://phoenixignition.org" style="color: var(--phoenix-gold);">phoenixignition.org</a></p>
+            <p><strong>✍️ Author:</strong> James Stanley</p>
+            <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.7;">
+                Phoenix Ignition • Hydrogen Rebirth • Stellar Memory • Mythic Fire
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
