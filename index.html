@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Phoenix Ignition - A ceremonial framework of hydrogen rebirth, stellar memory, and mythic fire">
     <meta name="author" content="James Stanley">
+    <link rel="preconnect" href="https://phoenixignition.org" crossorigin>
     <title>Phoenix Ignition | Ceremonial Framework</title>
     <style>
         :root {
@@ -14,6 +15,9 @@
             --stellar-blue: #1E3A8A;
             --cosmic-purple: #6B4BA5;
             --hydrogen-white: #F0F4F8;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 179, 71, 0.2);
+            --glass-border-hover: rgba(255, 179, 71, 0.3);
         }
 
         * {
@@ -28,6 +32,15 @@
             color: var(--hydrogen-white);
             line-height: 1.8;
             min-height: 100vh;
+        }
+        
+        /* Respect user's motion preferences */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
         }
 
         .container {
@@ -46,13 +59,15 @@
             font-size: 4rem;
             font-weight: bold;
             background: linear-gradient(45deg, var(--phoenix-gold), var(--phoenix-red), var(--phoenix-gold));
-            background-size: 200% auto;
+            background-size: 150% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             animation: shimmer 3s ease-in-out infinite;
             margin-bottom: 1rem;
             text-shadow: 0 0 30px rgba(255, 179, 71, 0.3);
+            will-change: background-position;
+            contain: layout style paint;
         }
 
         @keyframes shimmer {
@@ -82,6 +97,8 @@
             font-size: 5rem;
             margin: 2rem 0;
             animation: pulse 2s ease-in-out infinite;
+            will-change: transform, opacity;
+            contain: layout style;
         }
 
         @keyframes pulse {
@@ -96,13 +113,14 @@
         }
 
         .intro {
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--glass-bg);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 179, 71, 0.3);
+            border: 1px solid var(--glass-border-hover);
             border-radius: 15px;
             padding: 2rem;
             margin: 3rem 0;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            contain: layout style paint;
         }
 
         .intro p {
@@ -119,13 +137,15 @@
         }
 
         .feature-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--glass-bg);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 179, 71, 0.2);
+            border: 1px solid var(--glass-border);
             border-radius: 15px;
             padding: 2rem;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            contain: layout style paint;
+            will-change: transform;
         }
 
         .feature-card:hover {
@@ -173,11 +193,12 @@
 
         .artifact-item {
             background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 179, 71, 0.2);
+            border: 1px solid var(--glass-border);
             border-radius: 10px;
             padding: 1.5rem;
             text-align: center;
-            transition: all 0.3s ease;
+            transition: background 0.3s ease, border-color 0.3s ease;
+            contain: layout style paint;
         }
 
         .artifact-item:hover {
@@ -195,7 +216,7 @@
             text-align: center;
             padding: 3rem 2rem;
             margin-top: 4rem;
-            border-top: 1px solid rgba(255, 179, 71, 0.2);
+            border-top: 1px solid var(--glass-border);
         }
 
         footer p {
@@ -204,11 +225,12 @@
         }
 
         .legal {
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--glass-bg);
             border-radius: 10px;
             padding: 1.5rem;
             margin: 2rem 0;
             font-size: 0.95rem;
+            contain: layout style paint;
         }
 
         .cta-button {
@@ -221,8 +243,10 @@
             font-weight: bold;
             font-size: 1.1rem;
             margin: 1rem 0.5rem;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 4px 15px rgba(255, 179, 71, 0.3);
+            will-change: transform;
+            contain: layout style paint;
         }
 
         .cta-button:hover {
