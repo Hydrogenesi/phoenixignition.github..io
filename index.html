@@ -96,10 +96,7 @@
         }
 
         .intro {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 179, 71, 0.3);
-            border-radius: 15px;
             padding: 2rem;
             margin: 3rem 0;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
@@ -119,17 +116,12 @@
         }
 
         .feature-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 179, 71, 0.2);
-            border-radius: 15px;
             padding: 2rem;
-            transition: all 0.3s ease;
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
         }
 
         .feature-card:hover {
-            transform: translateY(-5px);
             border-color: var(--phoenix-gold);
             box-shadow: 0 8px 24px rgba(255, 179, 71, 0.3);
         }
@@ -177,7 +169,6 @@
             border-radius: 10px;
             padding: 1.5rem;
             text-align: center;
-            transition: all 0.3s ease;
         }
 
         .artifact-item:hover {
@@ -204,7 +195,6 @@
         }
 
         .legal {
-            background: rgba(255, 255, 255, 0.05);
             border-radius: 10px;
             padding: 1.5rem;
             margin: 2rem 0;
@@ -221,13 +211,30 @@
             font-weight: bold;
             font-size: 1.1rem;
             margin: 1rem 0.5rem;
-            transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(255, 179, 71, 0.3);
         }
 
         .cta-button:hover {
-            transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(255, 179, 71, 0.5);
+        }
+
+        /* Reusable utility classes */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+        }
+
+        .smooth-transition {
+            transition: all 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-5px);
+        }
+
+        .hover-lift-small:hover {
+            transform: translateY(-2px);
         }
 
         @media (max-width: 768px) {
@@ -254,29 +261,29 @@
             <p class="author">Authored and activated by <strong>James Stanley</strong></p>
         </header>
 
-        <div class="intro">
+        <div class="intro glass-card">
             <p>Phoenix Ignition is a public rite of hydrogen rebirth, stellar memory, and mythic fire. It bridges cosmology, quantum modeling, and poetic invocation—offering tangible artifacts for ceremonial launch, gifting, and collaborative ignition.</p>
         </div>
 
         <section class="section">
             <h2>Portal Features</h2>
             <div class="features">
-                <div class="feature-card">
+                <div class="feature-card glass-card smooth-transition hover-lift">
                     <span class="feature-icon">🔭</span>
                     <h3>Technical Overview</h3>
                     <p>Explore the foundations of Phoenix Ignition, FLQG (Finite Loop Quantum Gravity), and Hydrogenesi—bridging quantum mechanics and cosmological modeling.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card glass-card smooth-transition hover-lift">
                     <span class="feature-icon">🪶</span>
                     <h3>Ceremonial Artifacts</h3>
                     <p>Discover cue cards, sigil sets, and breath scores designed for ritualistic engagement and personal transformation.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card glass-card smooth-transition hover-lift">
                     <span class="feature-icon">📦</span>
                     <h3>Pre-Release Packets</h3>
                     <p>Access curated showcases for gifting and activation—designed to spark collaborative ignition across communities.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card glass-card smooth-transition hover-lift">
                     <span class="feature-icon">🧭</span>
                     <h3>Outreach & Consulting</h3>
                     <p>Connect with pathways for collaboration, consultation, and ceremonial co-creation.</p>
@@ -287,22 +294,22 @@
         <section class="section">
             <h2>Ceremonial Artifacts</h2>
             <div class="artifacts-grid">
-                <div class="artifact-item">
+                <div class="artifact-item smooth-transition">
                     <h4>🎴 Cue Cards</h4>
                     <p>Invocational prompts for ceremonial practice</p>
                 </div>
-                <div class="artifact-item">
+                <div class="artifact-item smooth-transition">
                     <h4>✨ Sigil Sets</h4>
                     <p>Sacred symbols for energy working and intention</p>
                 </div>
-                <div class="artifact-item">
+                <div class="artifact-item smooth-transition">
                     <h4>🌬️ Breath Scores</h4>
                     <p>Rhythmic guides for embodied presence</p>
                 </div>
             </div>
         </section>
 
-        <section class="section legal">
+        <section class="section legal glass-card">
             <h2>Legal Stewardship</h2>
             <p>Phoenix Ignition is housed within <strong>Combat Veterans Network LLC</strong> for operational continuity and legal grounding.</p>
             <p style="margin-top: 1rem;"><strong>License:</strong> MIT License - Public ceremonial use; all rights reserved by author</p>
