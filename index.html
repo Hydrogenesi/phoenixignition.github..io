@@ -237,6 +237,43 @@
             transform: translateY(-2px);
         }
 
+        /* Simulation Styles */
+        .sim-button {
+            background: linear-gradient(45deg, var(--phoenix-gold), var(--phoenix-red));
+            color: var(--deep-space);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .sim-button:hover:not(:disabled) {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(255, 179, 71, 0.4);
+        }
+
+        .sim-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .cue-card {
+            border: 2px solid var(--phoenix-red);
+            animation: cardGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes cardGlow {
+            0%, 100% {
+                box-shadow: 0 0 10px rgba(255, 107, 74, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 25px rgba(255, 107, 74, 0.6);
+            }
+        }
+
         @media (max-width: 768px) {
             h1 {
                 font-size: 2.5rem;
@@ -291,6 +328,54 @@
             </div>
         </section>
 
+        <!-- Interactive Nano-Star Simulation Section -->
+        <section class="section" id="simulation">
+            <h2>🌟 Nano-Star Evolution Simulation</h2>
+            <p style="text-align: center; margin-bottom: 2rem; opacity: 0.9;">
+                Experience the theoretical model of hydrogen rebirth—from genesis atom to brown dwarf awakening.
+            </p>
+            
+            <div class="simulation-container glass-card" style="padding: 2rem; margin-bottom: 2rem;">
+                <div class="simulation-controls" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem;">
+                    <button id="startSimBtn" class="sim-button">▶️ Start Simulation</button>
+                    <button id="resetSimBtn" class="sim-button">🔄 Reset</button>
+                    <button id="pauseSimBtn" class="sim-button" disabled>⏸️ Pause</button>
+                </div>
+                
+                <div class="simulation-display" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                    <!-- Main Canvas for Atom Visualization -->
+                    <div class="sim-panel glass-card" style="padding: 1rem;">
+                        <h4 style="color: var(--phoenix-gold); margin-bottom: 0.5rem; text-align: center;">Hydrogen Cluster</h4>
+                        <canvas id="atomCanvas" width="600" height="400" style="width: 100%; max-width: 600px; background: rgba(0,0,0,0.3); border-radius: 8px;"></canvas>
+                    </div>
+                    
+                    <!-- Stats Panel -->
+                    <div class="sim-panel glass-card" style="padding: 1rem;">
+                        <h4 style="color: var(--phoenix-gold); margin-bottom: 0.5rem; text-align: center;">Evolution Stats</h4>
+                        <div id="statsDisplay" style="font-family: monospace; font-size: 0.9rem; line-height: 1.8;">
+                            <p>⏱️ Time Step: <span id="timeStep">0</span></p>
+                            <p>⚛️ Hydrogen Atoms: <span id="atomCount">1</span></p>
+                            <p>🌡️ State: <span id="starState">Gas (Genesis)</span></p>
+                            <p>🧲 Magnetic Field: <span id="magField">0.00</span></p>
+                            <p>⚡ Conductivity: <span id="conductivity">0.00</span></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cue Card Display -->
+                <div id="cueCard" class="cue-card glass-card" style="margin-top: 1.5rem; padding: 1.5rem; text-align: center; display: none;">
+                    <h4 style="color: var(--phoenix-red); margin-bottom: 0.5rem;">📜 Cue Card</h4>
+                    <p id="cueCardText" style="font-style: italic;"></p>
+                </div>
+                
+                <!-- Bifurcation Tree Canvas -->
+                <div id="bifurcationPanel" class="sim-panel glass-card" style="padding: 1rem; margin-top: 1.5rem; display: none;">
+                    <h4 style="color: var(--phoenix-gold); margin-bottom: 0.5rem; text-align: center;">🌳 Proton Bifurcation Lineage</h4>
+                    <canvas id="treeCanvas" width="800" height="400" style="width: 100%; max-width: 800px; background: rgba(0,0,0,0.5); border-radius: 8px;"></canvas>
+                </div>
+            </div>
+        </section>
+
         <section class="section">
             <h2>Ceremonial Artifacts</h2>
             <div class="artifacts-grid">
@@ -324,5 +409,426 @@
             </p>
         </footer>
     </div>
+
+    <!-- Nano-Star Simulation Script -->
+    <script>
+    /**
+     * Phoenix Ignition - Nano-Star Evolution Simulation
+     * Based on the TOE (Theory of Everything) model by James Stanley
+     * 
+     * This simulation models the evolution of a hydrogen cluster through three phases:
+     * 1. Gas (Genesis) - Initial hydrogen atom attracts more atoms
+     * 2. Metallic - Under pressure, hydrogen becomes metallic
+     * 3. Brown Dwarf - Final phase with magnetic and conductive properties
+     * 
+     * Key equations implemented:
+     * - Hydrogen attraction: growth = atoms * (attractionForce - 1) * randomFactor
+     * - Magnetic field: sin(t/50) * (atoms/threshold) + noise
+     * - Conductivity: cos(t/50) * (atoms/threshold) + noise
+     */
+
+    (function() {
+        'use strict';
+
+        // === SIMULATION PARAMETERS ===
+        const CONFIG = {
+            initialHydrogenAtoms: 1,
+            maxTimeSteps: 1000,
+            hydrogenAttraction: 1.5,
+            metallicThreshold: 100,
+            metallicPhaseDuration: 200, // Time steps in metallic phase before brown dwarf
+            bifurcationDepth: 4,
+            animationDelay: 50
+        };
+
+        // === STATE MANAGEMENT ===
+        let state = {
+            currentAtoms: CONFIG.initialHydrogenAtoms,
+            timeStep: 0,
+            starState: 0, // 0: Gas, 1: Metallic, 2: Brown Dwarf
+            isRunning: false,
+            isPaused: false,
+            animationId: null,
+            metallicStartStep: null,
+            protonLineage: [],
+            magneticField: 0,
+            conductivity: 0
+        };
+
+        // === DOM ELEMENTS ===
+        const elements = {
+            startBtn: document.getElementById('startSimBtn'),
+            resetBtn: document.getElementById('resetSimBtn'),
+            pauseBtn: document.getElementById('pauseSimBtn'),
+            atomCanvas: document.getElementById('atomCanvas'),
+            treeCanvas: document.getElementById('treeCanvas'),
+            timeStep: document.getElementById('timeStep'),
+            atomCount: document.getElementById('atomCount'),
+            starState: document.getElementById('starState'),
+            magField: document.getElementById('magField'),
+            conductivity: document.getElementById('conductivity'),
+            cueCard: document.getElementById('cueCard'),
+            cueCardText: document.getElementById('cueCardText'),
+            bifurcationPanel: document.getElementById('bifurcationPanel')
+        };
+
+        // === PROTON CLASS ===
+        class Proton {
+            constructor(id, lineage) {
+                this.id = id;
+                this.lineage = lineage;
+                this.entangledWith = null;
+            }
+        }
+
+        // === CUE CARDS ===
+        const CUE_CARDS = {
+            genesis: {
+                title: "The Genesis Atom",
+                text: "In the beginning, there was a single hydrogen atom, a protostar's seed."
+            },
+            metallic: {
+                title: "The Metallic Transformation",
+                text: "Under immense pressure, the hydrogen cluster transforms into a metallic state."
+            },
+            brownDwarf: {
+                title: "The Brown Dwarf Awakens",
+                text: "The nano-star evolves into a brown dwarf, a crucible of quantum phenomena."
+            },
+            quantumonix: {
+                title: "The Phoenix Quantumonix",
+                text: "The hydrogen atom splits, birthing entangled protons in a recursive dance."
+            }
+        };
+
+        // === SIMULATION FUNCTIONS ===
+        
+        /**
+         * Simulates the growth of the nano-star by attracting more hydrogen atoms.
+         * @param {number} currentAtoms - Current number of atoms
+         * @returns {number} - New atom count after growth
+         */
+        function simulateProtostarPhase(currentAtoms) {
+            const randomFactor = 0.5 + Math.random();
+            const newAtoms = Math.floor(currentAtoms * (CONFIG.hydrogenAttraction - 1) * randomFactor);
+            return currentAtoms + Math.max(1, newAtoms);
+        }
+
+        /**
+         * Simulates the brown dwarf phase with fluctuating magnetic and conductive properties.
+         * @param {number} currentAtoms - Current number of atoms
+         * @param {number} timeStep - Current simulation time step
+         * @returns {Object} - Magnetic field and conductivity values
+         */
+        function simulateBrownDwarfPhase(currentAtoms, timeStep) {
+            const noise = () => (Math.random() - 0.5) * 0.2;
+            const magneticField = Math.sin(timeStep / 50) * (currentAtoms / CONFIG.metallicThreshold) + noise();
+            const conductivity = Math.cos(timeStep / 50) * (currentAtoms / CONFIG.metallicThreshold) + noise();
+            return { magneticField, conductivity };
+        }
+
+        /**
+         * Recursively splits a proton, creating a lineage of new protons.
+         * @param {Proton} proton - The proton to split
+         * @param {number} currentDepth - Current recursion depth
+         * @param {number} maxDepth - Maximum recursion depth
+         */
+        function hydrogenSplit(proton, currentDepth, maxDepth) {
+            if (currentDepth >= maxDepth) return;
+
+            const proton1 = new Proton(`${proton.id}-1`, [...proton.lineage, proton.id]);
+            const proton2 = new Proton(`${proton.id}-2`, [...proton.lineage, proton.id]);
+
+            proton1.entangledWith = proton2;
+            proton2.entangledWith = proton1;
+
+            state.protonLineage.push(proton1);
+            state.protonLineage.push(proton2);
+
+            hydrogenSplit(proton1, currentDepth + 1, maxDepth);
+            hydrogenSplit(proton2, currentDepth + 1, maxDepth);
+        }
+
+        // === VISUALIZATION FUNCTIONS ===
+
+        /**
+         * Draws the hydrogen atom cluster on the canvas.
+         */
+        function drawAtomCluster() {
+            const canvas = elements.atomCanvas;
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
+
+            ctx.clearRect(0, 0, width, height);
+
+            // Background gradient based on state
+            const gradient = ctx.createRadialGradient(width/2, height/2, 0, width/2, height/2, width/2);
+            
+            if (state.starState === 0) {
+                gradient.addColorStop(0, 'rgba(100, 150, 255, 0.3)');
+                gradient.addColorStop(1, 'rgba(10, 14, 39, 0.8)');
+            } else if (state.starState === 1) {
+                gradient.addColorStop(0, 'rgba(192, 192, 192, 0.5)');
+                gradient.addColorStop(1, 'rgba(50, 50, 80, 0.8)');
+            } else {
+                gradient.addColorStop(0, 'rgba(255, 107, 74, 0.5)');
+                gradient.addColorStop(1, 'rgba(139, 69, 19, 0.8)');
+            }
+            
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, width, height);
+
+            // Draw atoms as particles
+            const numParticles = Math.min(state.currentAtoms, 200);
+            const centerX = width / 2;
+            const centerY = height / 2;
+            const maxRadius = Math.min(width, height) / 2.5;
+
+            for (let i = 0; i < numParticles; i++) {
+                const angle = (i / numParticles) * Math.PI * 2 + state.timeStep * 0.01;
+                const radiusFactor = 0.3 + (i / numParticles) * 0.7;
+                const radius = maxRadius * radiusFactor * (0.8 + Math.sin(state.timeStep * 0.05 + i) * 0.2);
+                
+                const x = centerX + Math.cos(angle) * radius * (0.5 + Math.random() * 0.5);
+                const y = centerY + Math.sin(angle) * radius * (0.5 + Math.random() * 0.5);
+
+                // Particle color based on state
+                let particleColor;
+                if (state.starState === 0) {
+                    particleColor = `rgba(100, 200, 255, ${0.5 + Math.random() * 0.5})`;
+                } else if (state.starState === 1) {
+                    particleColor = `rgba(200, 200, 220, ${0.6 + Math.random() * 0.4})`;
+                } else {
+                    particleColor = `rgba(255, ${150 + Math.random() * 100}, ${50 + Math.random() * 50}, ${0.6 + Math.random() * 0.4})`;
+                }
+
+                ctx.beginPath();
+                ctx.arc(x, y, 2 + Math.random() * 2, 0, Math.PI * 2);
+                ctx.fillStyle = particleColor;
+                ctx.fill();
+            }
+
+            // Draw central glow
+            const glowGradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, 30);
+            if (state.starState === 2) {
+                glowGradient.addColorStop(0, 'rgba(255, 179, 71, 0.8)');
+                glowGradient.addColorStop(1, 'rgba(255, 107, 74, 0)');
+            } else {
+                glowGradient.addColorStop(0, 'rgba(255, 255, 255, 0.6)');
+                glowGradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+            }
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, 30, 0, Math.PI * 2);
+            ctx.fillStyle = glowGradient;
+            ctx.fill();
+        }
+
+        /**
+         * Draws the bifurcation tree showing proton lineage.
+         */
+        function drawBifurcationTree() {
+            const canvas = elements.treeCanvas;
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
+
+            ctx.clearRect(0, 0, width, height);
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
+            ctx.fillRect(0, 0, width, height);
+
+            if (state.protonLineage.length === 0) return;
+
+            function drawBranch(proton, x, y, angle, length, depth) {
+                if (depth === 0 || length < 5) return;
+
+                const xEnd = x + length * Math.cos(angle * Math.PI / 180);
+                const yEnd = y - length * Math.sin(angle * Math.PI / 180);
+
+                // Draw branch
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+                ctx.lineTo(xEnd, yEnd);
+                ctx.strokeStyle = `hsl(${30 + depth * 20}, 80%, ${50 + depth * 10}%)`;
+                ctx.lineWidth = depth * 0.5 + 1;
+                ctx.stroke();
+
+                // Draw node
+                ctx.beginPath();
+                ctx.arc(xEnd, yEnd, 3, 0, Math.PI * 2);
+                ctx.fillStyle = '#FFB347';
+                ctx.fill();
+
+                // Find children
+                const children = state.protonLineage.filter(p => 
+                    p.lineage.length > 0 && p.lineage[p.lineage.length - 1] === proton.id
+                );
+
+                if (children.length >= 2) {
+                    drawBranch(children[0], xEnd, yEnd, angle + 35, length * 0.7, depth - 1);
+                    drawBranch(children[1], xEnd, yEnd, angle - 35, length * 0.7, depth - 1);
+                }
+            }
+
+            const initialProton = state.protonLineage[0];
+            drawBranch(initialProton, width / 2, height - 20, 90, 50, CONFIG.bifurcationDepth);
+        }
+
+        /**
+         * Shows a cue card with animation.
+         * @param {Object} card - The cue card to display
+         */
+        function showCueCard(card) {
+            elements.cueCardText.textContent = `"${card.text}"`;
+            elements.cueCard.style.display = 'block';
+            elements.cueCard.style.animation = 'none';
+            elements.cueCard.offsetHeight; // Trigger reflow
+            elements.cueCard.style.animation = 'cardGlow 2s ease-in-out infinite';
+        }
+
+        /**
+         * Updates the stats display.
+         */
+        function updateStats() {
+            elements.timeStep.textContent = state.timeStep;
+            elements.atomCount.textContent = state.currentAtoms.toLocaleString();
+            
+            const stateNames = ['Gas (Genesis)', 'Metallic', 'Brown Dwarf'];
+            elements.starState.textContent = stateNames[state.starState];
+            elements.starState.style.color = state.starState === 2 ? '#FF6B4A' : 
+                                              state.starState === 1 ? '#C0C0C0' : '#64C8FF';
+            
+            elements.magField.textContent = state.magneticField.toFixed(3);
+            elements.conductivity.textContent = state.conductivity.toFixed(3);
+        }
+
+        // === MAIN SIMULATION LOOP ===
+
+        function simulationStep() {
+            if (!state.isRunning || state.isPaused) return;
+
+            // Check for state transitions and show cue cards
+            if (state.timeStep === 0) {
+                showCueCard(CUE_CARDS.genesis);
+            }
+
+            if (state.starState === 0) {
+                // Gas phase - grow the cluster
+                state.currentAtoms = simulateProtostarPhase(state.currentAtoms);
+                
+                if (state.currentAtoms >= CONFIG.metallicThreshold) {
+                    state.starState = 1;
+                    state.metallicStartStep = state.timeStep;
+                    showCueCard(CUE_CARDS.metallic);
+                }
+                state.magneticField = 0;
+                state.conductivity = 0;
+
+            } else if (state.starState === 1) {
+                // Metallic phase - prepare for brown dwarf transition after duration
+                if (state.timeStep > state.metallicStartStep + CONFIG.metallicPhaseDuration) {
+                    state.starState = 2;
+                    showCueCard(CUE_CARDS.brownDwarf);
+                    
+                    // Initialize proton lineage
+                    const initialProton = new Proton("P0", []);
+                    state.protonLineage.push(initialProton);
+                    hydrogenSplit(initialProton, 0, CONFIG.bifurcationDepth);
+                    
+                    elements.bifurcationPanel.style.display = 'block';
+                    
+                    setTimeout(() => showCueCard(CUE_CARDS.quantumonix), 2000);
+                }
+                state.magneticField = 0;
+                state.conductivity = 0;
+
+            } else if (state.starState === 2) {
+                // Brown dwarf phase
+                const properties = simulateBrownDwarfPhase(state.currentAtoms, state.timeStep);
+                state.magneticField = properties.magneticField;
+                state.conductivity = properties.conductivity;
+                
+                drawBifurcationTree();
+            }
+
+            state.timeStep++;
+            drawAtomCluster();
+            updateStats();
+
+            if (state.timeStep < CONFIG.maxTimeSteps) {
+                state.animationId = setTimeout(simulationStep, CONFIG.animationDelay);
+            } else {
+                stopSimulation();
+            }
+        }
+
+        function startSimulation() {
+            state.isRunning = true;
+            state.isPaused = false;
+            elements.startBtn.disabled = true;
+            elements.pauseBtn.disabled = false;
+            elements.pauseBtn.textContent = '⏸️ Pause';
+            simulationStep();
+        }
+
+        function pauseSimulation() {
+            if (state.isPaused) {
+                state.isPaused = false;
+                elements.pauseBtn.textContent = '⏸️ Pause';
+                simulationStep();
+            } else {
+                state.isPaused = true;
+                elements.pauseBtn.textContent = '▶️ Resume';
+                if (state.animationId) {
+                    clearTimeout(state.animationId);
+                }
+            }
+        }
+
+        function stopSimulation() {
+            state.isRunning = false;
+            state.isPaused = false;
+            elements.startBtn.disabled = false;
+            elements.pauseBtn.disabled = true;
+            elements.pauseBtn.textContent = '⏸️ Pause';
+            if (state.animationId) {
+                clearTimeout(state.animationId);
+            }
+        }
+
+        function resetSimulation() {
+            stopSimulation();
+            
+            state = {
+                currentAtoms: CONFIG.initialHydrogenAtoms,
+                timeStep: 0,
+                starState: 0,
+                isRunning: false,
+                isPaused: false,
+                animationId: null,
+                metallicStartStep: null,
+                protonLineage: [],
+                magneticField: 0,
+                conductivity: 0
+            };
+            
+            elements.cueCard.style.display = 'none';
+            elements.bifurcationPanel.style.display = 'none';
+            
+            updateStats();
+            drawAtomCluster();
+        }
+
+        // === EVENT LISTENERS ===
+        elements.startBtn.addEventListener('click', startSimulation);
+        elements.pauseBtn.addEventListener('click', pauseSimulation);
+        elements.resetBtn.addEventListener('click', resetSimulation);
+
+        // === INITIALIZATION ===
+        drawAtomCluster();
+        updateStats();
+
+    })();
+    </script>
 </body>
 </html>
