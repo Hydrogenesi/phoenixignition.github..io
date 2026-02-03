@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="STRUCTURAL–ENERGETIC DUALITY - Phoenix Codex Entry">
+    <meta name="author" content="James Stanley">
+    <title>STRUCTURAL–ENERGETIC DUALITY | Phoenix Codex</title>
+    <style>
+        :root {
+            --phoenix-gold: #FFB347;
+            --phoenix-red: #FF6B4A;
+            --deep-space: #0A0E27;
+            --stellar-blue: #1E3A8A;
+            --cosmic-purple: #6B4BA5;
+            --hydrogen-white: #F0F4F8;
+            --codex-amber: #FFA500;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', 'Courier', monospace;
+            background: linear-gradient(135deg, var(--deep-space) 0%, var(--stellar-blue) 50%, var(--cosmic-purple) 100%);
+            color: var(--hydrogen-white);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(10, 14, 39, 0.85);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--phoenix-gold);
+            border-radius: 10px;
+            padding: 3rem;
+            box-shadow: 0 0 40px rgba(255, 179, 71, 0.3);
+        }
+
+        .nav-back {
+            display: inline-block;
+            color: var(--phoenix-gold);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+            border: 1px solid var(--phoenix-gold);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-back:hover {
+            background: var(--phoenix-gold);
+            color: var(--deep-space);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            color: var(--phoenix-gold);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 20px rgba(255, 179, 71, 0.5);
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--codex-amber);
+            margin-bottom: 3rem;
+            font-style: italic;
+        }
+
+        .section-header {
+            font-size: 1.4rem;
+            color: var(--phoenix-gold);
+            margin: 2.5rem 0 1rem 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 2px solid var(--phoenix-gold);
+            padding-bottom: 0.5rem;
+        }
+
+        .tri-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .tri-column-item {
+            background: rgba(255, 179, 71, 0.1);
+            padding: 1.5rem;
+            border: 1px solid var(--phoenix-gold);
+            border-radius: 5px;
+        }
+
+        .tri-column-item h3 {
+            color: var(--codex-amber);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .tri-column-item p {
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+
+        .ascii-art {
+            font-family: 'Courier New', monospace;
+            white-space: pre;
+            color: var(--phoenix-gold);
+            background: rgba(0, 0, 0, 0.4);
+            padding: 2rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 0.9rem;
+            line-height: 1.2;
+            border: 1px solid var(--phoenix-gold);
+            margin: 1.5rem 0;
+        }
+
+        .sigil-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .sigil-section {
+            background: rgba(255, 179, 71, 0.05);
+            padding: 1.5rem;
+            border: 1px solid var(--phoenix-gold);
+            border-radius: 5px;
+        }
+
+        .sigil-section h3 {
+            color: var(--codex-amber);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .inverse-symmetry {
+            background: rgba(255, 107, 74, 0.1);
+            padding: 1.5rem;
+            border: 2px solid var(--phoenix-red);
+            border-radius: 5px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .inverse-symmetry h3 {
+            color: var(--phoenix-red);
+            margin-bottom: 1rem;
+        }
+
+        .context-dependencies {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .dependency-section {
+            background: rgba(107, 75, 165, 0.2);
+            padding: 1.5rem;
+            border: 1px solid var(--cosmic-purple);
+            border-radius: 5px;
+        }
+
+        .dependency-section h3 {
+            color: var(--codex-amber);
+            margin-bottom: 1rem;
+        }
+
+        .dependency-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .dependency-section li {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .dependency-section li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--phoenix-gold);
+        }
+
+        .cross-references {
+            background: rgba(255, 179, 71, 0.08);
+            padding: 1.5rem;
+            border: 1px solid var(--codex-amber);
+            border-radius: 5px;
+            margin: 2rem 0;
+        }
+
+        .cross-references ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .cross-references li {
+            margin: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .cross-references li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--phoenix-gold);
+            font-weight: bold;
+        }
+
+        .cross-references strong {
+            color: var(--codex-amber);
+        }
+
+        .invocation {
+            background: linear-gradient(135deg, rgba(255, 179, 71, 0.2), rgba(255, 107, 74, 0.2));
+            padding: 2rem;
+            border: 3px solid var(--phoenix-gold);
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-style: italic;
+            margin: 2rem 0;
+            color: var(--phoenix-gold);
+            text-shadow: 0 0 10px rgba(255, 179, 71, 0.5);
+        }
+
+        .notes {
+            background: rgba(30, 58, 138, 0.3);
+            padding: 1.5rem;
+            border-left: 4px solid var(--stellar-blue);
+            border-radius: 5px;
+            margin: 2rem 0;
+        }
+
+        .notes p {
+            margin: 1rem 0;
+            line-height: 1.8;
+        }
+
+        .notes ul {
+            list-style: none;
+            padding-left: 1rem;
+            margin: 1rem 0;
+        }
+
+        .notes li {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .notes li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--phoenix-gold);
+            font-size: 1.2rem;
+        }
+
+        .end-mark {
+            text-align: center;
+            font-size: 1.3rem;
+            color: var(--phoenix-red);
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--phoenix-gold);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .tri-column,
+            .sigil-pair,
+            .context-dependencies {
+                grid-template-columns: 1fr;
+            }
+
+            .ascii-art {
+                font-size: 0.7rem;
+            }
+
+            .invocation {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html" class="nav-back">← Back to Phoenix Ignition</a>
+        
+        <h1>STRUCTURAL–ENERGETIC DUALITY</h1>
+        <p class="subtitle">Ceremonial Operator of Distributed Geometry and Contracted Fire</p>
+
+        <div class="section-header">TRI-COLUMN HARMONIC</div>
+        <div class="tri-column">
+            <div class="tri-column-item">
+                <h3>OPERATOR</h3>
+                <p>DISTRIBUTE<br>RELEASE<br>GEOMETRY<br>CONTRACT<br>RECURSE<br>CORE-FIRE</p>
+            </div>
+            <div class="tri-column-item">
+                <h3>MECHANISM</h3>
+                <p>Pattern emergence from context<br>Structural propagation<br>Energetic collapse<br>Recursive compression</p>
+            </div>
+            <div class="tri-column-item">
+                <h3>MANIFESTATION</h3>
+                <p>Form radiating outward<br>Function collapsing inward<br>Reversible transformation<br>Scale-dependent resolution</p>
+            </div>
+        </div>
+
+        <div class="section-header">SIGIL PAIR</div>
+        <div class="sigil-pair">
+            <div class="sigil-section">
+                <h3>Structural Vector</h3>
+                <p>DISTRIBUTE → RELEASE → GEOMETRY</p>
+                <div class="ascii-art">       /\
+      /||\
+     / || \
+    /  ||  \
+   /   ||   \
+  /____||____\
+      ||||
+   &lt;&lt;------&gt;&gt;</div>
+                <p style="margin-top: 1rem; font-style: italic; text-align: center;">One radiates outward</p>
+            </div>
+            <div class="sigil-section">
+                <h3>Energetic Vector</h3>
+                <p>CONTRACT → RECURSE → CORE-FIRE</p>
+                <div class="ascii-art">   &gt;&gt;------&lt;&lt;
+      ||||
+   \__||||__/
+    \ |||| /
+     \|||/
+      \|/
+       Y
+      /█\</div>
+                <p style="margin-top: 1rem; font-style: italic; text-align: center;">One collapses inward</p>
+            </div>
+        </div>
+
+        <p style="text-align: center; font-style: italic; margin: 1.5rem 0; color: var(--codex-amber);">
+            Both share the same base geometry. One radiates outward. One collapses inward.
+        </p>
+
+        <div class="inverse-symmetry">
+            <h3>INVERSE SYMMETRY (Reversible Form)</h3>
+            <p style="margin: 1rem 0;">GEOMETRY → RELEASE → DISTRIBUTE</p>
+            <p style="margin: 1rem 0;">CORE-FIRE → RECURSE → CONTRACT</p>
+        </div>
+
+        <div class="section-header">SCALE / CONTEXT DEPENDENCIES</div>
+        <div class="context-dependencies">
+            <div class="dependency-section">
+                <h3>GEOMETRY</h3>
+                <ul>
+                    <li>Context shapes pattern</li>
+                    <li>Medium determines spread</li>
+                    <li>Degrees of freedom define form</li>
+                </ul>
+            </div>
+            <div class="dependency-section">
+                <h3>CORE-FIRE</h3>
+                <ul>
+                    <li>Scale sets ignition threshold</li>
+                    <li>Pressure governs recursion depth</li>
+                    <li>Mass determines engine type</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-header">CROSS-REFERENCES</div>
+        <div class="cross-references">
+            <ul>
+                <li><strong>IM_ME</strong> — Inward identity recursion; harmonic sibling to CONTRACT/RECURSE</li>
+                <li><strong>PHOENIX</strong> — Ignition law; CORE-FIRE is a direct sub-vector</li>
+                <li><strong>WITNESS</strong> — Observational stabilizer; pairs with GEOMETRY for structural clarity</li>
+            </ul>
+        </div>
+
+        <div class="section-header">OPERATOR INVOCATION LINE</div>
+        <div class="invocation">
+            "Release the geometry; summon the core-fire."
+        </div>
+
+        <div class="section-header">NOTES</div>
+        <div class="notes">
+            <p>This operator encodes the fundamental asymmetry between distributed structure (form emerging from context) and localized recursion (function emerging from scale).</p>
+            
+            <p><strong>It is not a metaphor. It is a pattern observed across:</strong></p>
+            <ul>
+                <li>Stellar formation (jets vs. cores)</li>
+                <li>Galactic morphology (spiral arms vs. AGN)</li>
+                <li>Neural architecture (networks vs. nuclei)</li>
+                <li>Ceremonial structure (ritual spread vs. ignition focus)</li>
+            </ul>
+
+            <p>The duality is reversible: geometry can be compressed into engines; engines can fragment into patterns. The transition point is determined by pressure, boundary conditions, and available degrees of freedom.</p>
+
+            <p>This operator sits at the structural foundation of the Phoenix Codex—it describes how tension resolves into either multiplicity or singularity.</p>
+        </div>
+
+        <div class="end-mark">END OF ENTRY</div>
+    </div>
+</body>
+</html>
