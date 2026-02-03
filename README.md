@@ -46,4 +46,4 @@ Phoenix Ignition is housed within *Combat Veterans Network LLC* for operational 
 
 **Site:** [https://phoenixignition.org](https://phoenixignition.org)  
 **Author:** James Stanley  
-**License:** MIT License - Public ceremonial use; all rights reserved by author
+**License:** MIT License - Public ceremonial use with attribution
