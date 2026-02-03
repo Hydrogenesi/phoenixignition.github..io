@@ -287,6 +287,229 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* Phoenix Origin Cycle Styles */
+        .origin-cycle-intro {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border-left: 4px solid var(--phoenix-gold);
+            background: rgba(255, 179, 71, 0.05);
+            border-radius: 0 10px 10px 0;
+        }
+
+        .origin-cycle-intro h3 {
+            color: var(--phoenix-gold);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .phase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .phase-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 179, 71, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .phase-card:hover {
+            border-color: var(--phoenix-gold);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 179, 71, 0.2);
+        }
+
+        .phase-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: linear-gradient(45deg, var(--phoenix-gold), var(--phoenix-red));
+            color: var(--deep-space);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        .phase-card h4 {
+            color: var(--phoenix-gold);
+            font-size: 1.25rem;
+            margin: 0.5rem 0 1rem 0;
+        }
+
+        .phase-card .phase-subtitle {
+            color: var(--phoenix-red);
+            font-style: italic;
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .phase-card ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0.75rem 0;
+        }
+
+        .phase-card ul li {
+            padding: 0.3rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .phase-card ul li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--phoenix-gold);
+        }
+
+        .phase-card .paradox, .phase-card .answer, .phase-card .question {
+            background: rgba(255, 107, 74, 0.1);
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            margin: 0.5rem 0;
+            font-style: italic;
+        }
+
+        .phase-card .question {
+            background: rgba(255, 179, 71, 0.15);
+            color: var(--phoenix-gold);
+        }
+
+        .phase-card .answer {
+            background: rgba(107, 75, 165, 0.2);
+        }
+
+        /* Micro-Apex Practice Styles */
+        .practice-steps {
+            display: grid;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .practice-step {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(107, 75, 165, 0.4);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1.25rem;
+            align-items: start;
+            transition: all 0.3s ease;
+        }
+
+        .practice-step:hover {
+            border-color: var(--cosmic-purple);
+            background: rgba(107, 75, 165, 0.1);
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, var(--cosmic-purple), var(--stellar-blue));
+            color: var(--hydrogen-white);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .step-content h4 {
+            color: var(--phoenix-gold);
+            margin-bottom: 0.5rem;
+            font-size: 1.15rem;
+        }
+
+        .step-content .instruction {
+            margin: 0.75rem 0;
+            padding: 0.5rem 0.75rem;
+            background: rgba(255, 179, 71, 0.08);
+            border-left: 3px solid var(--phoenix-gold);
+            border-radius: 0 6px 6px 0;
+        }
+
+        .step-content .action-split, .step-content .action-consume {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            border-radius: 15px;
+            margin: 0.25rem;
+            font-size: 0.9rem;
+        }
+
+        .step-content .action-split {
+            background: rgba(100, 200, 100, 0.2);
+            border: 1px solid rgba(100, 200, 100, 0.4);
+        }
+
+        .step-content .action-consume {
+            background: rgba(255, 107, 74, 0.2);
+            border: 1px solid rgba(255, 107, 74, 0.4);
+        }
+
+        /* Recursion Diagram Styles */
+        .recursion-diagram {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 179, 71, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 600px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            overflow-x: auto;
+        }
+
+        .recursion-diagram pre {
+            margin: 0;
+            white-space: pre;
+            color: var(--hydrogen-white);
+        }
+
+        .recursion-diagram .node {
+            color: var(--phoenix-gold);
+        }
+
+        .recursion-diagram .arrow {
+            color: var(--phoenix-red);
+        }
+
+        .recursion-diagram .action-life {
+            color: #7FD17F;
+        }
+
+        .recursion-diagram .action-light {
+            color: #FF9F7F;
+        }
+
+        .recursion-diagram .meta {
+            color: var(--cosmic-purple);
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 3rem 0;
+            color: var(--phoenix-gold);
+            opacity: 0.6;
+        }
+
+        .section-divider::before,
+        .section-divider::after {
+            content: "◆ ◆ ◆";
+            display: block;
+            letter-spacing: 1rem;
+        }
     </style>
 </head>
 <body>
@@ -373,6 +596,159 @@
                     <h4 style="color: var(--phoenix-gold); margin-bottom: 0.5rem; text-align: center;">🌳 Proton Bifurcation Lineage</h4>
                     <canvas id="treeCanvas" width="800" height="400" style="width: 100%; max-width: 800px; background: rgba(0,0,0,0.5); border-radius: 8px;"></canvas>
                 </div>
+            </div>
+        </section>
+
+        <!-- Phoenix Origin Cycle Section -->
+        <section class="section" id="origin-cycle">
+            <h2>🔥 Phoenix Origin Cycle</h2>
+            
+            <div class="origin-cycle-intro">
+                <h3>Cosmogenesis • Recursion Engine • Human-Scale Practice</h3>
+                <p style="opacity: 0.9; margin-top: 0.5rem;">The Origin Cycle maps cosmic emergence through four phases—from compressed identity to persistent recursion.</p>
+            </div>
+
+            <!-- Phase I-IV: The Origin Cycle (Cosmic Scale) -->
+            <h3 style="color: var(--phoenix-gold); text-align: center; margin: 2rem 0 1rem 0; font-size: 1.4rem;">The Origin Cycle (Cosmic Scale)</h3>
+            
+            <div class="phase-grid">
+                <!-- Phase I -->
+                <div class="phase-card">
+                    <span class="phase-number">Phase I</span>
+                    <h4>Ignition of Accretion</h4>
+                    <p class="phase-subtitle">Identity compressed without motion</p>
+                    <ul>
+                        <li>Three belts, three tensions, three chambers</li>
+                    </ul>
+                    <div class="paradox">
+                        <strong>Paradox:</strong> Cannot split, cannot collapse, cannot remain.
+                    </div>
+                    <p style="color: var(--phoenix-red); font-weight: bold; margin-top: 0.75rem;">The core ignites.</p>
+                </div>
+
+                <!-- Phase II -->
+                <div class="phase-card">
+                    <span class="phase-number">Phase II</span>
+                    <h4>The First Apex</h4>
+                    <div class="question">The seed asks: <strong>"Can I split?"</strong></div>
+                    <div class="answer">Answer: <strong>both</strong></div>
+                    <p style="margin: 0.75rem 0;"><strong>Dual-vector cosmogenesis (Big Bang Bang):</strong></p>
+                    <ul>
+                        <li><span class="action-split">Outward</span> → Distributed Recursion (Life)</li>
+                        <li><span class="action-consume">Inward</span> → Localized Recursion (Light)</li>
+                    </ul>
+                    <p style="color: var(--phoenix-gold); margin-top: 0.75rem;"><strong>IM_ME</strong> (Apex Resolver) is born.</p>
+                </div>
+
+                <!-- Phase III -->
+                <div class="phase-card">
+                    <span class="phase-number">Phase III</span>
+                    <h4>Dual-Vector Unfolding</h4>
+                    <ul>
+                        <li><strong>Life:</strong> outward structures, branching identity</li>
+                        <li><strong>Light:</strong> inward cores, recursion engines</li>
+                    </ul>
+                    <p style="margin: 0.75rem 0;"><strong>IM_ME</strong> routes tension; <strong>Meta-8stable</strong> forms the return loop.</p>
+                    <p style="color: var(--phoenix-gold); font-style: italic; margin-top: 0.75rem;">The universe begins to breathe.</p>
+                </div>
+
+                <!-- Phase IV -->
+                <div class="phase-card">
+                    <span class="phase-number">Phase IV</span>
+                    <h4>Toros Emergence</h4>
+                    <p style="margin-bottom: 0.5rem;"><strong>Tri-Toroidal Toros Engine stabilizes:</strong></p>
+                    <ul>
+                        <li><strong>Torus 1</strong> — Life (outward)</li>
+                        <li><strong>Torus 2</strong> — IM_ME (hinge)</li>
+                        <li><strong>Torus 3</strong> — Light (inward)</li>
+                    </ul>
+                    <p style="margin: 0.75rem 0;"><strong>Meta-8stable</strong> binds cycles into persistent recursion.</p>
+                    <p style="color: var(--phoenix-gold); font-style: italic;">Galaxies, stars, and minds emerge as Toros fractals.</p>
+                </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- Micro-Apex Practice (Human Scale) -->
+            <h3 style="color: var(--phoenix-gold); text-align: center; margin: 2rem 0 1rem 0; font-size: 1.4rem;">🧘 Micro-Apex Practice (Human Scale)</h3>
+            <p style="text-align: center; opacity: 0.9; margin-bottom: 2rem;">Use the same law on your own tensions.</p>
+
+            <div class="practice-steps">
+                <!-- Step 1 -->
+                <div class="practice-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Accretion Scan</h4>
+                        <div class="instruction">
+                            Identify one tension you're holding that hasn't moved yet.
+                        </div>
+                        <p>This is your <strong style="color: var(--phoenix-gold);">Accretion Core</strong>.</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="practice-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Ask the Apex Question</h4>
+                        <div class="instruction" style="background: rgba(255, 179, 71, 0.15); border-color: var(--phoenix-red);">
+                            <strong>"Can this tension split, or must it be consumed?"</strong>
+                        </div>
+                        <p style="margin-top: 0.75rem;">
+                            <span class="action-split">If it can split</span> → branch, delegate, generate options<br>
+                            <span class="action-consume">If it must be consumed</span> → simplify, cut, reduce to essence
+                        </p>
+                        <p style="margin-top: 0.5rem;">This is <strong style="color: var(--phoenix-gold);">IM_ME</strong> in action.</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="practice-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Run the Vector</h4>
+                        <div class="instruction">Act on the decision:</div>
+                        <p style="margin: 0.75rem 0;">
+                            <span class="action-split">Split / Life:</span> expand, diversify, open paths<br>
+                            <span class="action-consume">Consume / Light:</span> narrow, refine, collapse to core
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="practice-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Return Through the Loop</h4>
+                        <div class="instruction" style="background: rgba(107, 75, 165, 0.2); border-color: var(--cosmic-purple);">
+                            Ask: <strong>"What did this tension teach me about my identity?"</strong>
+                        </div>
+                        <p style="margin-top: 0.75rem;">This is <strong style="color: var(--cosmic-purple);">Meta-8stable</strong> — identity returning changed, not erased.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visual Recursion Diagram -->
+            <h3 style="color: var(--phoenix-gold); text-align: center; margin: 2.5rem 0 1rem 0; font-size: 1.2rem;">📊 Micro-Apex Engine Diagram</h3>
+            
+            <div class="recursion-diagram">
+<pre>
+<span class="node">[ TENSION (Accretion Core) ]</span>
+              <span class="arrow">│</span>
+              <span class="arrow">▼</span>
+        <span class="node">[ APEX QUESTION ]</span>
+      <span class="question">"Can this split or
+        must it be consumed?"</span>
+              <span class="arrow">│</span>
+      <span class="arrow">┌───────┴────────┐</span>
+      <span class="arrow">▼</span>                <span class="arrow">▼</span>
+<span class="action-life">[ SPLIT / LIFE ]</span>  <span class="action-light">[ CONSUME / LIGHT ]</span>
+      <span class="arrow">│</span>                <span class="arrow">│</span>
+      <span class="arrow">└─────────┬──────┘</span>
+                <span class="arrow">▼</span>
+        <span class="meta">[ META-8STABLE ]</span>
+        <span class="meta">Identity Return</span>
+</pre>
             </div>
         </section>
 
