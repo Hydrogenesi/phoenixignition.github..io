@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Phoenix Codex - Index of Ceremonial Operators and Patterns">
+    <meta name="author" content="James Stanley">
+    <title>Phoenix Codex | Index</title>
+    <style>
+        :root {
+            --phoenix-gold: #FFB347;
+            --phoenix-red: #FF6B4A;
+            --deep-space: #0A0E27;
+            --stellar-blue: #1E3A8A;
+            --cosmic-purple: #6B4BA5;
+            --hydrogen-white: #F0F4F8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: linear-gradient(135deg, var(--deep-space) 0%, var(--stellar-blue) 50%, var(--cosmic-purple) 100%);
+            color: var(--hydrogen-white);
+            line-height: 1.8;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .nav-back {
+            display: inline-block;
+            color: var(--phoenix-gold);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+            border: 1px solid var(--phoenix-gold);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-back:hover {
+            background: var(--phoenix-gold);
+            color: var(--deep-space);
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--phoenix-gold), var(--phoenix-red), var(--phoenix-gold));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s ease-in-out infinite;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes shimmer {
+            0%, 100% {
+                background-position: 0% center;
+            }
+            50% {
+                background-position: 100% center;
+            }
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--phoenix-gold);
+            margin-top: 1rem;
+        }
+
+        .intro {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 179, 71, 0.3);
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .codex-entries {
+            display: grid;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .entry-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 2px solid rgba(255, 179, 71, 0.3);
+            padding: 2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .entry-card:hover {
+            border-color: var(--phoenix-gold);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 32px rgba(255, 179, 71, 0.4);
+        }
+
+        .entry-card h2 {
+            color: var(--phoenix-gold);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .entry-card .subtitle {
+            color: var(--phoenix-red);
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .entry-card .description {
+            color: var(--hydrogen-white);
+            font-size: 1rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .entry-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background: rgba(255, 179, 71, 0.2);
+            color: var(--phoenix-gold);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255, 179, 71, 0.3);
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255, 179, 71, 0.2);
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .entry-card h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html" class="nav-back">← Back to Phoenix Ignition</a>
+        
+        <header>
+            <h1>Phoenix Codex</h1>
+            <p class="tagline">Index of Ceremonial Operators and Fundamental Patterns</p>
+        </header>
+
+        <div class="intro">
+            <p>The Phoenix Codex documents the foundational operators, patterns, and invocations that structure the Phoenix Ignition framework. Each entry describes a ceremonial operator—not as metaphor, but as observable pattern across cosmic, neural, and ritual domains.</p>
+        </div>
+
+        <div class="codex-entries">
+            <a href="structural-energetic-duality.html" class="entry-card">
+                <h2>STRUCTURAL–ENERGETIC DUALITY</h2>
+                <p class="subtitle">Ceremonial Operator of Distributed Geometry and Contracted Fire</p>
+                <p class="description">
+                    Encodes the fundamental asymmetry between distributed structure (form emerging from context) and localized recursion (function emerging from scale). This operator describes how tension resolves into either multiplicity or singularity—observed across stellar formation, galactic morphology, neural architecture, and ceremonial structure.
+                </p>
+                <div class="entry-tags">
+                    <span class="tag">GEOMETRY</span>
+                    <span class="tag">CORE-FIRE</span>
+                    <span class="tag">DUALITY</span>
+                    <span class="tag">REVERSIBLE</span>
+                </div>
+            </a>
+
+            <!-- Future codex entries will be added here -->
+        </div>
+
+        <footer>
+            <p><strong>Phoenix Codex</strong> — A living document of ceremonial operators</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">Authored and activated by James Stanley</p>
+        </footer>
+    </div>
+</body>
+</html>
